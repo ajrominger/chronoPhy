@@ -1,0 +1,468 @@
+hi.geo <- hi.geo.poly[hi.geo.poly$ISLAND=='Hawaii', ]
+proj4string(hi.geo)
+proj4string(ka.geo)
+pdf(file='fig_map_hawaii.pdf', width=4, height=4)#
+plot(hi.geo, col=geo.col[hi.geo$AGE_GROUP], border=geo.col[hi.geo$AGE_GROUP])#
+dev.off()
+pdf(file='fig_map_maui.pdf', width=4, height=4)#
+plot(ma.geo, col=geo.col[ma.geo$AGE_GROUP], border=geo.col[ma.geo$AGE_GROUP])#
+dev.off()
+pdf(file='fig_map_kauai.pdf', width=4, height=4)#
+plot(ka.geo, col=geo.col[ka.geo$AGE_GROUP], border=geo.col[ka.geo$AGE_GROUP])#
+dev.off()
+install.packages('maps')
+install.packages('mapdata')
+library(maps)
+library(mapdata)
+spTransform(ka.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84'))
+plot(spTransform(ka.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')))
+plot(spTransform(ka.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')))
+axis(1)
+axis(2)
+map(xlim=c(-160, -140), ylim=c(18, 22))
+map('worldHiRes', xlim=c(-160, -140), ylim=c(18, 22))
+?mapdata
+map('worldHires', xlim=c(-160, -140), ylim=c(18, 22))
+map('worldHires', xlim=c(-160, -140), ylim=c(18, 22), resolution=0)
+?map
+install.packages('mapproj')
+libarary(mapproj)
+library(mapproj)
+map('worldHires', xlim=c(-160, -140), ylim=c(18, 22), resolution=0, projection=proj4string(ma.geo))
+map('worldHires', xlim=c(-160, -140), ylim=c(18, 22), resolution=0)
+plot(spTransform(ka.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), add=TRUE)
+map('worldHires', xlim=c(-160, -140), ylim=c(18, 22), resolution=0)
+map('worldHires', xlim=c(-162, -140), ylim=c(18, 22), resolution=0)
+map('worldHires', xlim=c(-162, -140), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-162, -150), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-162, -155), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-162, -156), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-162, -154), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-160, -155), ylim=c(18, 23), resolution=0)
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), resolution=0, mar=rep(0, 4))
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), resolution=0, mar=rep(0, 4))
+plot(spTransform(hi.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), #
+     col=geo.col[hi.geo$AGE_GROUP], border=geo.col[hi.geo$AGE_GROUP], add=TRUE)
+plot(spTransform(ma.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), #
+     col=geo.col[ma.geo$AGE_GROUP], border=geo.col[ma.geo$AGE_GROUP], add=TRUE)
+plot(spTransform(ka.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), #
+     col=geo.col[ka.geo$AGE_GROUP], border=geo.col[ka.geo$AGE_GROUP], add=TRUE)
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), resolution=0, add=TRUE)
+pdf(file='fig_chrono.pdf', width=5, height=5)#
+#
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), resolution=0, mar=rep(0, 4))#
+#
+plot(spTransform(hi.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), #
+     col=geo.col[hi.geo$AGE_GROUP], border=geo.col[hi.geo$AGE_GROUP], add=TRUE)#
+plot(spTransform(ma.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), #
+     col=geo.col[ma.geo$AGE_GROUP], border=geo.col[ma.geo$AGE_GROUP], add=TRUE)#
+plot(spTransform(ka.geo, CRS('+proj=longlat +ellps=WGS84 +datum=WGS84')), #
+     col=geo.col[ka.geo$AGE_GROUP], border=geo.col[ka.geo$AGE_GROUP], add=TRUE)#
+#
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), resolution=0, add=TRUE)#
+#
+dev.off()
+library(ape)
+?rcoal
+rbdtree(0.9, 0.8)
+rbdtree(0.09, 0.08)
+rbdtree(0.1, 0.09)
+rbdtree(0.2, 0.19)
+rbdtree(0.2, 0.1)
+rbdtree(0.2, 0.15)
+set.seed(123)#
+tre <- rbdtree(0.2, 0.15)
+tre
+set.seed(123)#
+tre <- rbdtree(0.2, 0.15)#
+tre
+plot(tre)
+?rbdtree
+tre <- rphylo(0.2, 0.15)
+tre <- rphylo(50, 0.2, 0.15)
+plot(tre)
+tre <- rphylo(50, 0.2, 0.15, fossils=TRUE)
+plot(tre)
+set.seed(123)#
+tre <- rphylo(100, 0.2, 0.15, fossils=TRUE)#
+plot(tre, show.tip.labels=FALSE)
+plot(tre, show.tip.label=FALSE)
+set.seed(123)#
+tre <- rphylo(80, 0.2, 0.15, fossils=TRUE)#
+plot(tre, show.tip.label=FALSE)
+set.seed(123)#
+tre <- rphylo(50, 0.2, 0.15, fossils=TRUE)#
+plot(tre, show.tip.label=FALSE)
+tre.mod <- drop.fossil(tre)
+plot(tre.mod)
+plot(tre)
+plot(tre, show.tip.label=FALSE, edge.width=2)
+tre <- rphylo(30, 0.2, 0.15, fossils=TRUE)
+plot(tre, show.tip.label=FALSE, edge.width=2)
+set.seed(123)#
+tre <- rphylo(30, 0.2, 0.15, fossils=TRUE)#
+plot(tre, show.tip.label=FALSE, edge.width=2)
+par(mar=rep(0, 4))#
+plot(tre, show.tip.label=FALSE, edge.width=2)
+pdf(file='fig_phylo.pdf', width=6, height=5)#
+par(mar=rep(0, 4))#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+pdf(file='fig_phylo.pdf', width=6, height=4)#
+par(mar=rep(0, 4))#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+pdf(file='fig_phylo.pdf', width=8, height=4)#
+par(mar=rep(0, 4))#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+tre <- rphylo(5, 0.2, 0.15, fossile=TRUE)
+tre <- rphylo(5, 0.2, 0.15, fossil=TRUE)
+plot(tre)
+set.seed(123)#
+tre <- rphylo(5, 0.2, 0.15, fossil=TRUE)#
+plot(tre)
+plot(tre, show.tip.label=FALSE)
+set.seed(12)#
+tre <- rphylo(5, 0.2, 0.15, fossil=TRUE)#
+plot(tre, show.tip.label=FALSE)
+plot(tre, show.tip.label=FALSE, edge.width=2, edge.col='gray')
+plot(drop.fossil(tre))
+plot(tre, show.tip.label=FALSE, edge.width=2, edge.col='gray')
+plot(drop.fossil(tre))
+plot(tre, show.tip.label=FALSE, edge.width=2, edge.col='gray')
+plot(drop.fossil(tre))
+pdf(file='fig_phyloSml.pdf', width=8, height=4)#
+plot(tre, show.tip.label=FALSE, edge.width=2, edge.col='gray')#
+dev.off()
+pdf(file='fig_phyloSmlExtnt.pdf', width=8, height=4)#
+plot(drop.fossil(tre), show.tip.label=FALSE, edge.width=2, edge.col='gray')#
+dev.off()
+set.seed(123)
+tre <- rphylo(50, 0.2, 0.15, fossil=FALSE)
+plot(tre, show.tip.label=FALSE, edge.width=2, edge.col='gray')
+plot(tre, show.tip.label=FALSE, edge.width=2)
+set.seed(123)#
+tre <- rphylo(50, 0.2, 0.15, fossil=FALSE)#
+pdf(file='fig_phyloBig.pdf', width=8, height=4)#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+set.seed(123)#
+tre <- rphylo(50, 0.2, 0.15, fossil=FALSE)#
+pdf(file='fig_phyloBig.pdf', width=4, height=4)#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+set.seed(123)#
+tre <- rphylo(12, 0.2, 0.15, fossil=FALSE)
+plot(tre, show.tip.label=FALSE, edge.width=2)
+set.seed(123)#
+tre <- rphylo(12, 0.2, 0.15, fossil=FALSE)#
+pdf(file='fig_phyloMETE.pdf', width=6, height=4)#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+pdf(file='fig_phyloMETE.pdf', width=4, height=4)#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+plot(density(c(rnorm(100, 2, 1), abs(rnorm(70, 0, 0.5)))))
+plot(density(c(rnorm(100, 2, 1), abs(rnorm(70, 0, 0.5))), from=0))
+plot(density(c(rnorm(70, 3, 1), abs(rnorm(20, 0, 0.1))), from=0))
+plot(density(c(rnorm(70, 4, 1), abs(rnorm(20, 0, 0.1))), from=0))
+hist(c(rnorm(70, 4, 1), abs(rnorm(20, 0, 0.1))))
+hist(c(rnorm(70, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=20)
+hist(c(rnorm(100, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=20)
+hist(c(rnorm(100, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=30)
+hist(c(rnorm(120, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=30)
+hist(c(rnorm(140, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=30)
+hist(c(rnorm(140, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=30)
+hist(c(rnorm(140, 4, 1), abs(rnorm(20, 0, 0.1))), breaks=30)
+?density
+x <- c(rnorm(140, 4, 1), abs(rnorm(20, 0, 0.1)))
+x <- c(rnorm(140, 4, 1), abs(rnorm(20, 0, 0.1)))
+plot(density(x, from=0, kernel='ep'))
+x <- c(rnorm(140, 4, 1), abs(rnorm(60, 0, 0.1)))
+plot(density(x, from=0, kernel='ep'))
+plot(density(x, from=0, kernel='t'))
+plot(density(x, from=0, kernel='r'))
+plot(density(x, kernel='r'))
+x.den <- density(x, kernel='r', from=0)
+plot(x.den)
+abline(v=0.5)
+abline(v=0.75)
+abline(v=0.85)
+abline(v=1)
+x.den$x
+x.den$x <- x.den$x - 1
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- NA#
+plot(x.den)
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x <- c(rnorm(140, 6, 1), abs(rnorm(60, 0, 0.1)))
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x <- c(rnorm(140, 6, 1), abs(rnorm(100, 0, 0.1)))#
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x <- c(rnorm(140, 6, 1), abs(rnorm(100, 0, 0.1)))#
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x <- c(rnorm(140, 6, 1), abs(rnorm(100, 0, 0.1)))#
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x <- c(rnorm(140, 6, 1), abs(rnorm(100, 0, 0.1)))#
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x <- c(rnorm(140, 6, 1), abs(rnorm(100, 0, 0.1)))#
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+x.den <- density(x, kernel='r', from=0)#
+x.den$x <- x.den$x - 1.5#
+x.den$y[x.den$x < 0] <- 0#
+plot(x.den)
+plot(x.den, xlab=expression(mu), xaxs='n', main='')
+plot(x.den, xlab=expression(mu), xaxt='n', main='')
+mtext(expression(mu), side=1, line=2, cex=2)
+axis(1, at=0)
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='', main='')#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='')#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4)
+setwd('~/Dropbox/Research/chronoPhy/evol2015')
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+abline(v=5, col='red', lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)
+abline(v=6, col='red', lwd=2)
+pdf(file='fig_simExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+abline(v=6, col='red', lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)#
+dev.off()
+x <- abs(rnorm(100, 0, 0.1))#
+x.den <- density(x, kernel='t', from=0)#
+# x.den$x <- x.den$x - 1.5#
+# x.den$y[x.den$x < 0] <- 0#
+#
+# pdf(file='fig_simExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+abline(v=6, col='red', lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)#
+# dev.off()
+x <- rexp(100)#
+x.den <- density(x, kernel='t', from=0)#
+# x.den$x <- x.den$x - 1.5#
+# x.den$y[x.den$x < 0] <- 0#
+#
+# pdf(file='fig_simExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)
+x <- rexp(100, 10)#
+x.den <- density(x, kernel='t', from=0)#
+# x.den$x <- x.den$x - 1.5#
+# x.den$y[x.den$x < 0] <- 0#
+#
+# pdf(file='fig_simExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)
+x <- rexp(100, 0.1)#
+x.den <- density(x, kernel='t', from=0)#
+# x.den$x <- x.den$x - 1.5#
+# x.den$y[x.den$x < 0] <- 0#
+#
+# pdf(file='fig_simExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)
+x
+x <- rexp(100, 1)
+x
+x <- rgamma(100, 0.1, 1)#
+plot(density(x, from=0))
+x <- rgamma(100, 0.1, 1)#
+plot(density(x, from=0, kernel='t'))
+x <- rgamma(100, 0.1, 4)
+plot(density(x, from=0, kernel='t'))
+x <- rgamma(100, 0.1, 10)
+plot(density(x, from=0, kernel='t'))
+x <- rgamma(100, 0.5, 10)
+plot(density(x, from=0, kernel='t'))
+x <- rgamma(100, 0.2, 10)
+plot(density(x, from=0, kernel='t'))
+x <- rgamma(100, 0.2, 1)
+plot(density(x, from=0, kernel='t'))
+plot(density(x, from=0, kernel='r'))
+x <- rgamma(100, 0.2, 5)
+plot(density(x, from=0, kernel='r'))
+x.den <- density(x, kernel='r', from=0)#
+#
+# pdf(file='fig_simExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)
+pdf(file='fig_obsExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)#
+dev.off()
+pdf(file='fig_obsExtSamp.pdf', width=4, height=4)#
+par(mar=c(3, 3, 0, 0)+0.1, mgp=c(1, 1, 0))#
+plot(x.den, xlab='', xaxt='n', yaxt='n', main='', cex.lab=1.4, lwd=2)#
+mtext(expression(mu), side=1, line=2, cex=2)#
+axis(1, at=0)#
+dev.off()
+library(maps)#
+library(mapdata)#
+library(ape)
+map('worldHires', xlim=c(-160, -150), ylim=c(18, 22))
+map('worldHires', xlim=c(-160, -155), ylim=c(18, 23))
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23))
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), res=0)
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), res=0, fill=TRUE)
+pdf(file='fig_hiMap.pdf', width=6, height=6)#
+map('worldHires', xlim=c(-160, -154), ylim=c(18, 23), res=0, fill=TRUE)#
+dev.off()
+tre <- rphylo(50, 1, 1)
+plot(tre)
+tre <- rphylo(50, 1, 0.8)
+plot(tre)
+tre <- rphylo(50, 1, 0.8)#
+plot(tre, show.tip.label=FALSE, edge.width=1.5)
+pdf(file='fig_bigTree.pdf', width=6, height=6)#
+plot(tre, show.tip.label=FALSE, edge.width=1.5)#
+dev.off()
+tre.ka <- rphylo(50, 1, 1, fossils=TRUE)
+plot(tre.ka)
+tre.ka <- rphylo(10, 1, 1, fossils=TRUE)
+plot(tre.ka)
+tre.ka <- rphylo(10, 1, 1, fossils=TRUE)
+plot(tre.ka)
+tre.ka <- rphylo(10, 1, 1, fossils=TRUE)
+plot(tre.ka)
+tre.ka <- rphylo(10, 1, 1, fossils=TRUE)
+plot(tre.ka)
+tre.ka <- rphylo(10, 1, 0.8, fossils=TRUE)#
+plot(tre.ka)
+tre.ka <- rphylo(10, 1, 0.8, fossils=TRUE)#
+plot(tre.ka)
+tre.oa <- rphylo(8, 1, 0.5)#
+plot(tre.oa)
+tre.oa <- rphylo(8, 1, 0.5)#
+plot(tre.oa)
+tre.oa <- rphylo(8, 1, 0.5, fossils=TRUE)
+plot(tre.oa)
+tre.ha <- rphylo(4, 1, 0.1)#
+plot(tre.ha)
+axis(1)
+plot(tre.ma)#
+axis(1)
+tre.ma <- rphylo(6, 1, 0.5)
+plot(tre.ma)
+axis(1)
+plot(tre.oa)#
+axis(1)
+plot(tre.ka)#
+axis(1)
+plot(tre.ka, x.lim=c(0, 6))
+plot(tre.oa, x.lim=c(0, 6))
+plot(tre.ma, x.lim=c(0, 6))
+plot(tre.ha, x.lim=c(0, 6))
+plot(tre.ka, x.lim=c(0, 6))
+axis(2)
+plot(tre.oa, x.lim=c(0, 6))
+axis(2)
+plot(tre.oa, x.lim=c(0, 6), y.lim=c(1, 20))
+plot(tre.ma, x.lim=c(0, 6), y.lim=c(1, 20))
+plot(tre.ha, x.lim=c(0, 6), y.lim=c(1, 20))
+plot(tre.ka, x.lim=c(0, 6), show.tip.label=FALSE)
+plot(tre.ka, x.lim=c(0, 6), show.tip.label=FALSE, edge.width=1.5)
+pdf(file='fig_treeKa.pdf', width=3, height=3)#
+par(mar=rep(0, 4))#
+plot(tre.ka, x.lim=c(0, 6), show.tip.label=FALSE, edge.width=1.5)#
+dev.off()#
+#
+pdf(file='fig_treeOa.pdf', width=3, height=3)#
+par(mar=rep(0, 4))#
+plot(tre.oa, x.lim=c(0, 6), y.lim=c(1, 20), show.tip.label=FALSE, edge.width=1.5)#
+dev.off()#
+#
+pdf(file='fig_treeMa.pdf', width=3, height=3)#
+par(mar=rep(0, 4))#
+plot(tre.ma, x.lim=c(0, 6), y.lim=c(1, 20), show.tip.label=FALSE, edge.width=1.5)#
+dev.off()#
+#
+pdf(file='fig_treeHa.pdf', width=3, height=3)#
+par(mar=rep(0, 4))#
+plot(tre.ha, x.lim=c(0, 6), y.lim=c(1, 20), show.tip.label=FALSE, edge.width=1.5)#
+dev.off()
+tre <- rphylo(8, 1, 0.8)
+plot(tre)
+plot(tre, show.tip.label=FALSE, edge.width=2)
+pdf(file='fig_smallTre.pdf', width=4, height=4)#
+plot(tre, show.tip.label=FALSE, edge.width=2)#
+dev.off()
+rnbinom(100, 0.1, 0.9)
+rnbinom(100, 10, 0.9)
+?rnbinom
+rnbinom(100, mean=2, size=10)
+rnbinom(100, mu=2, size=10)
+rnbinom(100, mu=2, size=10) + 1
+plot(sort(rnbinom(100, mu=2, size=10) + 1, TRUE))
+plot(sort(rnbinom(100, mu=1, size=10) + 1, TRUE))
+plot(sort(rnbinom(100, mu=1, size=1) + 1, TRUE))
+plot(sort(rnbinom(100, mu=2, size=1) + 1, TRUE))
+plot(sort(rnbinom(300, mu=2, size=1) + 1, TRUE))
+plot(sort(rnbinom(300, mu=2, size=1) + 1, TRUE), log='y')
+plot(sort(rpois(300, mu=2) + 1, TRUE), log='y')
+plot(sort(rpois(300, 2) + 1, TRUE), log='y')
+plot(sort(rnbinom(300, mu=2, size=1) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')
+plot(sort(rpois(300, 2) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')
+par(mar=c(2, 2, 0, 0), mgp=c(1, 1, 0))
+plot(sort(rnbinom(300, mu=2, size=1) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')
+pdf(file='fig_fisherSAD.pdf', width=4, height=4)#
+par(mar=c(2, 2, 0, 0), mgp=c(1, 1, 0))#
+plot(sort(rnbinom(300, mu=2, size=1) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')#
+dev.off()#
+#
+pdf(file='fig_lnormSAD.pdf', width=4, height=4)#
+par(mar=c(2, 2, 0, 0), mgp=c(1, 1, 0))#
+plot(sort(rpois(300, 2) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')#
+dev.off()
+pdf(file='fig_fisherSAD.pdf', width=2, height=2)#
+par(mar=c(2, 2, 0, 0), mgp=c(1, 1, 0))#
+plot(sort(rnbinom(300, mu=2, size=1) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')#
+dev.off()#
+#
+pdf(file='fig_lnormSAD.pdf', width=2, height=2)#
+par(mar=c(2, 2, 0, 0), mgp=c(1, 1, 0))#
+plot(sort(rpois(300, 2) + 1, TRUE), log='y', xaxt='n', yaxt='n', xlab='Species rank', ylab='Abundance')#
+dev.off()
